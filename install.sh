@@ -34,6 +34,9 @@ esac
 repository_url="https://momomomo.pages.dev"
 feed_url="$repository_url/$branch/$arch/momo"
 
+# sing-box custom URL (reF1nd version)
+singbox_url="https://github.com/JADECHEN248/OpenWrt-momo/releases/download/v1.12.21-reF1nd/sing-box-1.12.21-reF1nd-linux-amd64"
+
 if [ -x "/bin/opkg" ]; then
 	# update feeds
 	echo "update feeds"
@@ -70,4 +73,14 @@ elif [ -x "/usr/bin/apk" ]; then
 	done
 fi
 
-echo "success" 
+# Install custom sing-box (reF1nd version)
+echo "Installing custom sing-box (reF1nd)..."
+if [ -f /usr/bin/sing-box ]; then
+	mv /usr/bin/sing-box /usr/bin/sing-box.bak
+	echo "Backup original sing-box to /usr/bin/sing-box.bak"
+fi
+wget -O /usr/bin/sing-box $singbox_url
+chmod +x /usr/bin/sing-box
+echo "Custom sing-box installed successfully!"
+
+echo "success"
