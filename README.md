@@ -44,7 +44,19 @@ apk add luci-app-momo
 apk add luci-i18n-momo-zh-cn
 ```
 
-### B. Install From Release
+### B. Install From Release (with custom sing-box)
+
+This installation method includes **reF1nd custom sing-box** pre-installed.
+
+```shell
+wget -O - https://github.com/JADECHEN248/OpenWrt-momo/raw/refs/heads/main/install.sh | ash
+```
+
+> **Note**: The custom sing-box (reF1nd) will replace the official version. Original sing-box is backed up to `/usr/bin/sing-box.bak`.
+
+### C. Install From Release (Official)
+
+To install with official sing-box from the upstream repository:
 
 ```shell
 wget -O - https://github.com/nikkinikki-org/OpenWrt-momo/raw/refs/heads/main/install.sh | ash
