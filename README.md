@@ -21,30 +21,7 @@ Transparent Proxy with sing-box on OpenWrt.
 
 ## Install & Update
 
-### A. Install From Feed (Recommended)
-
-1. Add Feed
-
-```shell
-# only needs to be run once
-wget -O - https://github.com/nikkinikki-org/OpenWrt-momo/raw/refs/heads/main/feed.sh | ash
-```
-
-2. Install
-
-```shell
-# you can install from shell or `Software` menu in LuCI
-# for opkg
-opkg install momo
-opkg install luci-app-momo
-opkg install luci-i18n-momo-zh-cn
-# for apk
-apk add momo
-apk add luci-app-momo
-apk add luci-i18n-momo-zh-cn
-```
-
-### B. Install From Release (with custom sing-box)
+### A. Install From Release (with custom sing-box)
 
 This installation method includes **reF1nd custom sing-box** pre-installed.
 
@@ -54,7 +31,7 @@ wget -O - https://github.com/JADECHEN248/OpenWrt-momo/raw/refs/heads/main/instal
 
 > **Note**: The custom sing-box (reF1nd) will replace the official version. Original sing-box is backed up to `/usr/bin/sing-box.bak`.
 
-### C. Install From Release (Official)
+### B. Install From Release (Official)
 
 To install with official sing-box from the upstream repository:
 
