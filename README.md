@@ -6,6 +6,7 @@ OpenWrt 上的透明代理，基于 sing-box。
 
 ## 特性
 
+*   **sing-box re 分支内核**：支持 provider 字段订阅。
 *   **轻量级**：使用 sing-box 作为核心，内存占用低，性能高。
 *   **简洁易用**：基于 LuCI 的配置界面，保留了 homeproxy 的简洁风格。
 *   **强大**：支持多种代理协议，包括 Shadowsocks, VMess, VLESS, Trojan, Hysteria, Hysteria2, Tuic 等。
