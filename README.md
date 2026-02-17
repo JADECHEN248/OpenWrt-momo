@@ -1,90 +1,70 @@
-![GitHub License](https://img.shields.io/github/license/nikkinikki-org/OpenWrt-momo?style=for-the-badge&logo=github) ![GitHub Tag](https://img.shields.io/github/v/release/nikkinikki-org/OpenWrt-momo?style=for-the-badge&logo=github) ![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/nikkinikki-org/OpenWrt-momo/total?style=for-the-badge&logo=github) ![GitHub Repo stars](https://img.shields.io/github/stars/nikkinikki-org/OpenWrt-momo?style=for-the-badge&logo=github) [![Telegram](https://img.shields.io/badge/Telegram-gray?style=for-the-badge&logo=telegram)](https://t.me/nikkinikki_org)
+# OpenWrt-momo
 
-English | [中文](README.zh.md)
+OpenWrt 上的透明代理，基于 sing-box。
 
-# Momo
+此项目是基于 [homeproxy](https://github.com/immortalwrt/homeproxy) 的修改版本。
 
-Transparent Proxy with sing-box on OpenWrt.
+## 概览
 
-## Prerequisites
+### 仪表板
+![Dashboard](https://github.com/user-attachments/assets/61327140-5975-4081-ae45-8b3879f82631)
 
-- OpenWrt >= 24.10
-- Linux Kernel >= 5.13
-- firewall4
+### 节点
+![Node](https://github.com/user-attachments/assets/0593c617-66a9-4672-9b2d-1510e4708798)
 
-## Feature
+## 特性
 
-- Transparent Proxy (Redirect/TPROXY/TUN, IPv4 and/or IPv6)
-- Access Control
-- Profile Editor
-- Scheduled Restart
+*   **轻量级**：使用 sing-box 作为核心，内存占用低，性能高。
+*   **简洁易用**：基于 LuCI 的配置界面，保留了 homeproxy 的简洁风格。
+*   **强大**：支持多种代理协议，包括 Shadowsocks, VMess, VLESS, Trojan, Hysteria, Hysteria2, Tuic 等。
+*   **灵活**：支持多种路由策略，包括 规则集, GeoIP, Geosite 等。
+*   **DNS 分流**：支持国内外 DNS 分流，防止 DNS 污染。
+*   **TProxy**：支持 TProxy 透明代理。
 
-## Install & Update
+## 依赖
 
-### A. Install From Release (with custom sing-box)
+*   `sing-box` (>= 1.8.0)
+*   `luci-base`
+*   `jsonfilter`
 
-This installation method includes **reF1nd custom sing-box** pre-installed.
+## 安装
 
-```shell
-wget -O - https://github.com/JADECHEN248/OpenWrt-momo/raw/refs/heads/main/install.sh | ash
+您可以从 [Releases](https://github.com/JADECHEN248/OpenWrt-momo/releases) 页面下载最新的 ipk 包并在 OpenWrt 上安装。
+
+```bash
+opkg install luCI-app-openwrt-momo_*.ipk
 ```
 
-> **Note**: The custom sing-box (reF1nd) will replace the official version. Original sing-box is backed up to `/usr/bin/sing-box.bak`.
+或者您可以自行编译：
 
-### B. Install From Release (Official)
+```bash
+# 添加 feed 源
+echo "src-git openwrt_momo https://github.com/JADECHEN248/OpenWrt-momo.git" >> feeds.conf.default
 
-To install with official sing-box from the upstream repository:
+# 更新并安装 feed
+./scripts/feeds update openwrt_momo
+./scripts/feeds install -a -p openwrt_momo
 
-```shell
-wget -O - https://github.com/nikkinikki-org/OpenWrt-momo/raw/refs/heads/main/install.sh | ash
+# 在 make menuconfig 中选择 LuCI -> Applications -> luci-app-openwrt-momo
+make menuconfig
+
+# 编译
+make package/luci-app-openwrt-momo/compile V=s
 ```
 
-## Uninstall & Reset
+## 配置
 
-```shell
-wget -O - https://github.com/nikkinikki-org/OpenWrt-momo/raw/refs/heads/main/uninstall.sh | ash
-```
+安装完成后，您可以在 OpenWrt 的 LuCI 界面中找到 "服务" -> "OpenWrt-momo"。
 
-## How To Use
+1.  **添加节点**：在 "节点" 页面添加您的代理节点，或通过订阅链接导入。
+2.  **配置路由**：在 "路由" 页面配置您的分流规则。
+3.  **启动服务**：在 "概览" 页面启用并启动服务。
 
-See [Wiki](https://github.com/nikkinikki-org/OpenWrt-momo/wiki)
+## 鸣谢
 
-## How does it work
- 
-1. Run sing-box.
-2. Set scheduled restart.
-3. Get neccesarry param from profile.
-4. Set ip rule/route.
-5. Generate firewall and apply it.
+*   [immortalwrt/homeproxy](https://github.com/immortalwrt/homeproxy) - 本项目的基础
+*   [SagerNet/sing-box](https://github.com/SagerNet/sing-box) - 核心代理程序
 
-Note that the steps above may change base on config.
+## 许可证
 
-## Compilation
-
-```shell
-# add feed
-echo "src-git momo https://github.com/nikkinikki-org/OpenWrt-momo.git;main" >> "feeds.conf.default"
-# update & install feeds
-./scripts/feeds update -a
-./scripts/feeds install -a
-# make package
-make package/luci-app-momo/compile
-```
-
-The package files will be found under `bin/packages/your_architecture/momo`.
-
-## Dependencies
-
-- ca-bundle
-- curl
-- firewall4
-- ip-full
-- kmod-inet-diag
-- kmod-nft-socket
-- kmod-nft-tproxy
-- kmod-tun
-- sing-box (1.12)
-
-## Contributors
-
-[![Contributors](https://contrib.rocks/image?repo=nikkinikki-org/OpenWrt-momo)](https://github.com/nikkinikki-org/OpenWrt-momo/graphs/contributors)
+本项目遵循 [GPL-3.0](LICENSE) 许可证。
