@@ -4,14 +4,6 @@ OpenWrt 上的透明代理，基于 sing-box。
 
 此项目是基于 [homeproxy](https://github.com/immortalwrt/homeproxy) 的修改版本。
 
-## 概览
-
-### 仪表板
-![Dashboard](https://github.com/user-attachments/assets/61327140-5975-4081-ae45-8b3879f82631)
-
-### 节点
-![Node](https://github.com/user-attachments/assets/0593c617-66a9-4672-9b2d-1510e4708798)
-
 ## 特性
 
 *   **轻量级**：使用 sing-box 作为核心，内存占用低，性能高。
