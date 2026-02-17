@@ -14,6 +14,7 @@
 
 ## 功能
 
+- **sing-box re 分支内核**：支持 provider 字段订阅
 - 透明代理 (Redirect/TPROXY/TUN, IPv4 和/或 IPv6)
 - 访问控制
 - 配置文件编辑器
