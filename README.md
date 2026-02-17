@@ -21,6 +21,14 @@ OpenWrt 上的透明代理，基于 sing-box。
 
 ## 安装
 
+### 一键安装 (推荐)
+
+```bash
+wget -O - https://github.com/JADECHEN248/OpenWrt-momo/raw/refs/heads/main/install.sh | ash
+```
+
+### 手动安装
+
 您可以从 [Releases](https://github.com/JADECHEN248/OpenWrt-momo/releases) 页面下载最新的 ipk 包并在 OpenWrt 上安装。
 
 ```bash
